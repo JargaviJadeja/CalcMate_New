@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8FBFF"
+    android:layout_marginTop="26dp"
+    tools:context=".UnitConverterActivity">
+
+    <!-- Header Section -->
+    <include
+        layout="@layout/app_header"
+        android:layout_marginTop="30dp"
+        android:id="@+id/app_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <!-- Main Content Section -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Title for the Grid -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose a Converter"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp" />
+
+            <!-- 2 x 3 Grid of ImageButtons for different converters -->
+            <GridLayout
+                android:id="@+id/converterGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="3"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false"
+                android:useDefaultMargins="true">
+
+                <!-- Length Converter -->
+                <LinearLayout
+                    android:id="@+id/cardLength"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageButton
+                        android:id="@+id/btnLengthConverter"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/length_convert_logo"
+                        android:scaleType="centerInside"
+                        android:background="@drawable/button_card_bg"
+                        android:contentDescription="Length Converter"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Length Converter"
+                        android:textColor="#1A73E8"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Weight Converter -->
+                <LinearLayout
+                    android:id="@+id/cardWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageButton
+                        android:id="@+id/btnWeightConverter"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/weight_converter_logo"
+                        android:scaleType="centerInside"
+                        android:background="@drawable/button_card_bg"
+                        android:contentDescription="Weight Converter"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weight Converter"
+                        android:textColor="#1A73E8"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Temperature Converter -->
+                <LinearLayout
+                    android:id="@+id/cardTemperature"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageButton
+                        android:id="@+id/btnTemperatureConverter"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/temp_convert_logo"
+                        android:scaleType="centerInside"
+                        android:background="@drawable/button_card_bg"
+                        android:contentDescription="Temperature Converter"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Temperature Converter"
+                        android:textColor="#1A73E8"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Volume Converter -->
+                <LinearLayout
+                    android:id="@+id/cardVolume"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageButton
+                        android:id="@+id/btnVolumeConverter"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/volumeconvert_logo"
+                        android:scaleType="centerInside"
+                        android:background="@drawable/button_card_bg"
+                        android:contentDescription="Volume Converter"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Volume Converter"
+                        android:textColor="#1A73E8"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Area Converter -->
+                <LinearLayout
+                    android:id="@+id/cardArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageButton
+                        android:id="@+id/btnAreaConverter"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/areaconvert_logo"
+                        android:scaleType="centerInside"
+                        android:background="@drawable/button_card_bg"
+                        android:contentDescription="Area Converter"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Area Converter"
+                        android:textColor="#1A73E8"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Data Transfer Rate Converter -->
+                <LinearLayout
+                    android:id="@+id/cardDataRate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageButton
+                        android:id="@+id/btnDataTransferRateConverter"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/datarate_logo"
+                        android:scaleType="centerInside"
+                        android:background="@drawable/button_card_bg"
+                        android:contentDescription="Data Transfer Rate Converter"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Data Transfer Rate"
+                        android:textColor="#1A73E8"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Footer Section -->
+    <include
+        layout="@layout/app_footer"
+        android:id="@+id/app_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
