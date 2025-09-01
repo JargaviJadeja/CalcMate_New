@@ -40,7 +40,12 @@
         <activity android:name=".SimpleInterestCalculatorActivity"/>
         <activity android:name=".TipCalculatorActivity"/>
         <activity android:name=".HealthCalcActivity" />
+        <activity android:name=".BmiCalculatorActivity"/>
+        <activity android:name=".BmrCalculatorActivity"/>
+        <activity android:name=".IdealWeightActivity"/>
+        <activity android:name=".CalorieTrackerActivity"/>
         <activity android:name=".DateTimeToolsActivity" />
+        <activity android:name=".DateDifferenceActivity"/>
         <activity android:name=".ProgrammerCalcActivity" />
 
         <!-- Add these new activities that the footer links to -->

@@ -5,16 +5,43 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#F8FBFF"
-    android:layout_marginTop="26dp"
+    android:layout_marginTop="0dp"
     tools:context=".UnitConverterActivity">
 
     <!-- Header Section -->
-    <include
-        layout="@layout/app_header"
-        android:layout_marginTop="30dp"
+    <LinearLayout
         android:id="@+id/app_header"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:background="@color/bgsettings"
+        android:elevation="4dp"
+        android:layout_marginTop="0dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical">
+
+
+
+        <!-- Title of the Activity -->
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="CalcMate"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
+
+
+
+    </LinearLayout>
+
 
     <!-- Main Content Section -->
     <ScrollView
@@ -228,10 +255,51 @@
     </ScrollView>
 
     <!-- Footer Section -->
-    <include
-        layout="@layout/app_footer"
-        android:id="@+id/app_footer"
+    <!-- We include the common footer layout here -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="86dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/background"
+        android:elevation="8dp"
+        android:paddingTop="8dp"
+
+        android:paddingBottom="8dp">
+
+        <!-- Home Icon -->
+        <ImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Home"
+            android:padding="12dp" />
+
+        <!-- History Icon -->
+        <ImageButton
+            android:id="@+id/btnHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_history"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="History"
+            android:padding="12dp" />
+
+        <!-- Settings Icon -->
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_settings"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Settings"
+            android:padding="12dp" />
+
+    </LinearLayout>
 
 </LinearLayout>
