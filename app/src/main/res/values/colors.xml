@@ -10,6 +10,17 @@
     <color name="blue_500">#2196F3</color>
     <color name="blue_700">#1976D2</color>
 
+
+    <!-- Basic Calculator Colors -->
+    <color name="background_gray">#F5F5F5</color>
+    <color name="display_background">#FFFFFF</color>
+    <color name="text_black">#000000</color>
+
+    <!-- Numpad Colors -->
+    <color name="button_numpad_background">#F5F5F5</color>
+    <color name="button_background_white">#FFFFFF</color>
+    <color name="button_border_gray">#C0C0C0</color>
+
     <!-- Theme-specific colors - LIGHT MODE -->
     <color name="background_light">#E0E0E0</color>
     <color name="text_color_light">#212121</color>

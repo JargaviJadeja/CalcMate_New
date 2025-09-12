@@ -18,9 +18,9 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard)   // <-- res/layout/activity_dashboard.xml
 
         // Make sure these IDs exist in activity_dashboard.xml
-        findViewById<ImageButton>(R.id.btnBasicCalc).setOnClickListener {
-            startActivity(Intent(this, BasicCalcActivity::class.java))
-        }
+//        findViewById<ImageButton>(R.id.btnBasicCalc).setOnClickListener {
+//            startActivity(Intent(this, BasicCalcActivity::class.java))
+//        }
         findViewById<ImageButton>(R.id.btnScientificCalc).setOnClickListener {
             startActivity(Intent(this, ScientificCalcActivity::class.java))
         }
@@ -37,7 +37,7 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(Intent(this, DateTimeToolsActivity::class.java))
         }
         findViewById<ImageButton>(R.id.btnProgrammerCalc).setOnClickListener {
-            startActivity(Intent(this, ProgrammerCalcActivity::class.java))
+            startActivity(Intent(this, ProgrammerCalculatorActivity::class.java))
         }
 
         // Add the footer logic

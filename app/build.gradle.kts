@@ -7,6 +7,11 @@ android {
     namespace = "com.example.calcmate_new"
     compileSdk = 36
 
+    // ...
+    buildFeatures {
+        viewBinding=true
+    }
+
     defaultConfig {
         applicationId = "com.example.calcmate_new"
         minSdk = 36
@@ -36,7 +41,7 @@ android {
 }
 
 dependencies {
-
+    implementation("net.objecthunter:exp4j:0.4.8")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

@@ -11,54 +11,49 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CalcMate_New">
+        <activity
+            android:name=".BasicCalActivity"
+            android:exported="false" />
         <!-- Splash is your launcher -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Dashboard that Splash opens -->
-        <activity android:name=".DashboardActivity" />
-
-        <!-- Destinations -->
-        <activity android:name=".BasicCalcActivity" />
+        </activity> <!-- Dashboard that Splash opens -->
+        <activity android:name=".DashboardActivity" /> <!-- Destinations -->
+<!--        <activity android:name=".BasicCalcActivity" />-->
         <activity android:name=".ScientificCalcActivity" />
         <activity android:name=".UnitConverterActivity" />
         <activity android:name=".LengthConverterActivity" />
-        <activity android:name=".WeightConverterActivity"/>
-        <activity android:name=".TemperatureConverterActivity"/>
-        <activity android:name=".VolumeConverterActivity"/>
-        <activity android:name=".AreaConverterActivity"/>
-        <activity android:name=".DataTransferRateConverterActivity"/>
+        <activity android:name=".WeightConverterActivity" />
+        <activity android:name=".TemperatureConverterActivity" />
+        <activity android:name=".VolumeConverterActivity" />
+        <activity android:name=".AreaConverterActivity" />
+        <activity android:name=".DataTransferRateConverterActivity" />
         <activity android:name=".FinancialToolsActivity" />
-        <activity android:name=".LoanCalculatorActivity"/>
-        <activity android:name=".CompoundInterestCalculatorActivity"/>
-        <activity android:name=".SimpleInterestCalculatorActivity"/>
-        <activity android:name=".TipCalculatorActivity"/>
+        <activity android:name=".LoanCalculatorActivity" />
+        <activity android:name=".CompoundInterestCalculatorActivity" />
+        <activity android:name=".SimpleInterestCalculatorActivity" />
+        <activity android:name=".TipCalculatorActivity" />
         <activity android:name=".HealthCalcActivity" />
-        <activity android:name=".BmiCalculatorActivity"/>
-        <activity android:name=".BmrCalculatorActivity"/>
-        <activity android:name=".IdealWeightActivity"/>
-        <activity android:name=".CalorieTrackerActivity"/>
+        <activity android:name=".BmiCalculatorActivity" />
+        <activity android:name=".BmrCalculatorActivity" />
+        <activity android:name=".IdealWeightActivity" />
+        <activity android:name=".CalorieTrackerActivity" />
         <activity android:name=".DateTimeToolsActivity" />
-        <activity android:name=".DateDifferenceActivity"/>
-        <activity android:name=".ProgrammerCalcActivity" />
-
-        <!-- Add these new activities that the footer links to -->
+        <activity android:name=".DateDifferenceActivity" />
+        <activity android:name=".TimeZoneActivity" />
+        <activity android:name=".TimestampActivity" />
+        <activity android:name=".ProgrammerCalculatorActivity" /> <!-- Add these new activities that the footer links to -->
         <activity android:name=".HistoryActivity" />
         <activity android:name=".SettingsActivity" />
-
         <activity
             android:name=".AboutusActivity"
             android:exported="false" />
-
-
-
-
     </application>
 
 </manifest>

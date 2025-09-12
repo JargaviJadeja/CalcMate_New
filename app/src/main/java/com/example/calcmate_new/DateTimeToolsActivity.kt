@@ -28,12 +28,17 @@ class DateTimeToolsActivity : AppCompatActivity() {
 
         btnTimeZoneConverter.setOnClickListener {
             // This toast will be replaced with an intent to a new activity
-            Toast.makeText(this, "Time Zone Converter clicked!", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Time Zone Converter clicked!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, TimeZoneActivity::class.java)
+            startActivity(intent)
         }
 
         btnTimestampConverter.setOnClickListener {
             // This toast will be replaced with an intent to a new activity
-            Toast.makeText(this, "Timestamp Converter clicked!", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Timestamp Converter clicked!", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this, TimestampActivity::class.java)
+            startActivity(intent)
         }
     }
 }
