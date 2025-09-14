@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Volume Converter"
-        android:textColor="#659EC7"
+        android:textColor="#0041C2"
         android:textSize="28sp"
         android:textStyle="bold"
         android:layout_marginTop="30dp"
@@ -60,8 +60,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Convert"
-        android:backgroundTint="@color/buttonColor"
-        android:textColor="@color/buttonTextColor"
+        android:backgroundTint="@color/Blue_berry"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
@@ -89,10 +89,10 @@
                 android:layout_height="wrap_content"
                 android:padding="24dp"
                 android:textSize="24sp"
-                android:textColor="#000000"
+                android:textColor="#0041C2"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:text="Result will be shown here"/>
+                android:text=""/>
 
         </androidx.cardview.widget.CardView>
     </FrameLayout>

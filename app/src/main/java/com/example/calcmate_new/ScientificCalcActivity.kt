@@ -1,426 +1,228 @@
-//package com.example.calcmate_new
-//
-//import android.os.Bundle
-//import android.view.View
-//import android.widget.Button
-//import android.widget.TextView
-//import android.widget.Toast
-//import androidx.appcompat.app.AppCompatActivity
-//import kotlin.math.*
-//
-//class ScientificCalcActivity : AppCompatActivity() {
-//
-//    // Declare TextViews for display
-//    private lateinit var textViewExpression: TextView
-//    private lateinit var textViewResult: TextView
-//
-//    // StringBuilder to build the expression
-//    private var expression = StringBuilder()
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_scientific_calc)
-//
-//        // Initialize TextViews
-//        textViewExpression = findViewById(R.id.textViewExpression)
-//        textViewResult = findViewById(R.id.textViewResult)
-//
-//        // Find all number and operator buttons and set click listeners
-//        setButtonListeners()
-//    }
-//
-//    // A helper method to find all buttons and set their click listeners
-//    private fun setButtonListeners() {
-//        // Numbers and decimal point
-//        findViewById<Button>(R.id.btn0).setOnClickListener(numberClickListener)
-//        findViewById<Button>(R.id.btn1).setOnClickListener(numberClickListener)
-//        findViewById<Button>(R.id.btn2).setOnClickListener(numberClickListener)
-//        findViewById<Button>(R.id.btn3).setOnClickListener(numberClickListener)
-//        findViewById<Button>(R.id.btn4).setOnClickListener(numberClickListener)
-//        findViewById<Button>(R.id.btn5).setOnClickListener(numberClickListener)
-//        findViewById<Button>(R.id.btn6).setOnClickListener(numberClickListener)
-//        findViewById<Button>(R.id.btn7).setOnClickListener(numberClickListener)
-//        findViewById<Button>(R.id.btn8).setOnClickListener(numberClickListener)
-//        findViewById<Button>(R.id.btn9).setOnClickListener(numberClickListener)
-//        findViewById<Button>(R.id.btnDot).setOnClickListener(numberClickListener)
-//
-//        // Operators
-//        findViewById<Button>(R.id.btnAdd).setOnClickListener(operatorClickListener)
-//        findViewById<Button>(R.id.btnSubtract).setOnClickListener(operatorClickListener)
-//        findViewById<Button>(R.id.btnMultiply).setOnClickListener(operatorClickListener)
-//        findViewById<Button>(R.id.btnDivide).setOnClickListener(operatorClickListener)
-//        findViewById<Button>(R.id.btnPower).setOnClickListener(operatorClickListener)
-//
-//        // Special functions and controls
-//        findViewById<Button>(R.id.btnSin).setOnClickListener(functionClickListener)
-//        findViewById<Button>(R.id.btnCos).setOnClickListener(functionClickListener)
-//        findViewById<Button>(R.id.btnTan).setOnClickListener(functionClickListener)
-//        findViewById<Button>(R.id.btnLog).setOnClickListener(functionClickListener)
-//        findViewById<Button>(R.id.btnLn).setOnClickListener(functionClickListener)
-//        findViewById<Button>(R.id.btnRoot).setOnClickListener(functionClickListener)
-//
-//        // Constants and brackets
-//        findViewById<Button>(R.id.btnPi).setOnClickListener(constantClickListener)
-//        findViewById<Button>(R.id.btnE).setOnClickListener(constantClickListener)
-//        findViewById<Button>(R.id.btnOpenBracket).setOnClickListener(bracketClickListener)
-//        findViewById<Button>(R.id.btnCloseBracket).setOnClickListener(bracketClickListener)
-//
-//        // Clear, Backspace, and Equals
-//        findViewById<Button>(R.id.btnC).setOnClickListener { clearExpression() }
-//        findViewById<Button>(R.id.btnBackspace).setOnClickListener { backspace() }
-//        findViewById<Button>(R.id.btnEquals).setOnClickListener { calculateResult() }
-//    }
-//
-//    // Listener for number and decimal point buttons
-//    private val numberClickListener = View.OnClickListener { view ->
-//        val button = view as Button
-//        expression.append(button.text)
-//        updateExpressionDisplay()
-//    }
-//
-//    // Listener for operator buttons
-//    private val operatorClickListener = View.OnClickListener { view ->
-//        val button = view as Button
-//        // Prevent adding multiple operators in a row
-//        if (expression.isNotEmpty() && !isOperator(expression.last())) {
-//            expression.append(button.text)
-//            updateExpressionDisplay()
-//        }
-//    }
-//
-//    // Listener for scientific function buttons (sin, cos, etc.)
-//    private val functionClickListener = View.OnClickListener { view ->
-//        val button = view as Button
-//        val function = button.text.toString()
-//        expression.append(function).append("(")
-//        updateExpressionDisplay()
-//    }
-//
-//    // Listener for constant buttons (pi, e)
-//    private val constantClickListener = View.OnClickListener { view ->
-//        val button = view as Button
-//        expression.append(button.text)
-//        updateExpressionDisplay()
-//    }
-//
-//    // Listener for bracket buttons
-//    private val bracketClickListener = View.OnClickListener { view ->
-//        val button = view as Button
-//        expression.append(button.text)
-//        updateExpressionDisplay()
-//    }
-//
-//    // Helper function to check if a character is an operator
-//    private fun isOperator(c: Char): Boolean {
-//        return c == '+' || c == '-' || c == '*' || c == '/' || c == 'x'
-//    }
-//
-//    // Updates the expression TextView
-//    private fun updateExpressionDisplay() {
-//        textViewExpression.text = expression.toString()
-//    }
-//
-//    // Clears the expression
-//    private fun clearExpression() {
-//        expression.clear()
-//        textViewExpression.text = ""
-//        textViewResult.text = "0"
-//    }
-//
-//    // Deletes the last character from the expression
-//    private fun backspace() {
-//        if (expression.isNotEmpty()) {
-//            expression.deleteCharAt(expression.length - 1)
-//            updateExpressionDisplay()
-//        }
-//    }
-//
-//    // Evaluates the expression
-//    private fun calculateResult() {
-//        try {
-//            // A simple implementation for evaluation.
-//            // For a real calculator, you would need a more robust expression parser.
-//            val result = evaluateExpression(expression.toString())
-//            textViewResult.text = result.toString()
-//        } catch (e: Exception) {
-//            textViewResult.text = "Error"
-//            Toast.makeText(this, "Invalid Expression", Toast.LENGTH_SHORT).show()
-//        }
-//    }
-//
-//    // A simple, basic expression evaluator. Note: This does not handle
-//    // order of operations (BODMAS/PEMDAS) correctly for complex expressions.
-//    private fun evaluateExpression(expr: String): Double {
-//        var tempExpr = expr
-//            .replace("sin", "sin(").replace("cos", "cos(")
-//            .replace("tan", "tan(").replace("log", "log(")
-//            .replace("ln", "ln(").replace("√", "sqrt(")
-//            .replace("π", "PI").replace("e", "E")
-//
-//        // A very basic parser, this will need to be replaced with a proper one
-//        // for a robust calculator.
-//        val operands = tempExpr.split('+', '-', '*', '/')
-//        val operators = tempExpr.filter { it in "+-*/" }
-//
-//        // The fix: use .length for the string variable "operators"
-//        if (operands.size != (operators.length + 1)) {
-//            throw IllegalArgumentException("Invalid expression format")
-//        }
-//
-//        var result = operands[0].toDouble()
-//        for (i in operators.indices) {
-//            val nextOperand = operands[i + 1].toDouble()
-//            when (operators[i]) {
-//                '+' -> result += nextOperand
-//                '-' -> result -= nextOperand
-//                '*' -> result *= nextOperand
-//                '/' -> {
-//                    if (nextOperand == 0.0) throw ArithmeticException("Division by zero")
-//                    result /= nextOperand
-//                }
-//            }
-//        }
-//        return result
-//    }
-//}
-
-
-
 package com.example.calcmate_new
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.math.*
-import java.util.Stack
 
 class ScientificCalcActivity : AppCompatActivity() {
 
-    // Declare TextViews for display
-    private lateinit var textViewExpression: TextView
-    private lateinit var textViewResult: TextView
+    private lateinit var displayInput: TextView
+    private lateinit var displayResult: TextView
 
-    // StringBuilder to build the expression
-    private var expression = StringBuilder()
+    private var currentInput = StringBuilder("0")
+    private var lastOperation = ""
+    private var lastNumber = ""
+    private var isNewOperation = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scientific_calc)
 
-        // Initialize TextViews
-        textViewExpression = findViewById(R.id.textViewExpression)
-        textViewResult = findViewById(R.id.textViewResult)
+        displayInput = findViewById(R.id.display_input)
+        displayResult = findViewById(R.id.display_result)
 
-        // Find all number and operator buttons and set click listeners
-        setButtonListeners()
+        // Find all ImageButtons and set up click listeners
+        setupNumberButtons()
+        setupOperatorButtons()
+        setupFunctionButtons()
+        setupScientificButtons()
     }
 
-    // A helper method to find all buttons and set their click listeners
-    private fun setButtonListeners() {
-        // Numbers and decimal point
-        findViewById<Button>(R.id.btn0).setOnClickListener(numberClickListener)
-        findViewById<Button>(R.id.btn1).setOnClickListener(numberClickListener)
-        findViewById<Button>(R.id.btn2).setOnClickListener(numberClickListener)
-        findViewById<Button>(R.id.btn3).setOnClickListener(numberClickListener)
-        findViewById<Button>(R.id.btn4).setOnClickListener(numberClickListener)
-        findViewById<Button>(R.id.btn5).setOnClickListener(numberClickListener)
-        findViewById<Button>(R.id.btn6).setOnClickListener(numberClickListener)
-        findViewById<Button>(R.id.btn7).setOnClickListener(numberClickListener)
-        findViewById<Button>(R.id.btn8).setOnClickListener(numberClickListener)
-        findViewById<Button>(R.id.btn9).setOnClickListener(numberClickListener)
-        findViewById<Button>(R.id.btnDot).setOnClickListener(numberClickListener)
-
-        // Operators
-        findViewById<Button>(R.id.btnAdd).setOnClickListener(operatorClickListener)
-        findViewById<Button>(R.id.btnSubtract).setOnClickListener(operatorClickListener)
-        findViewById<Button>(R.id.btnMultiply).setOnClickListener(operatorClickListener)
-        findViewById<Button>(R.id.btnDivide).setOnClickListener(operatorClickListener)
-        findViewById<Button>(R.id.btnPower).setOnClickListener(operatorClickListener)
-
-        // Special functions and controls
-        findViewById<Button>(R.id.btnSin).setOnClickListener(functionClickListener)
-        findViewById<Button>(R.id.btnCos).setOnClickListener(functionClickListener)
-        findViewById<Button>(R.id.btnTan).setOnClickListener(functionClickListener)
-        findViewById<Button>(R.id.btnLog).setOnClickListener(functionClickListener)
-        findViewById<Button>(R.id.btnLn).setOnClickListener(functionClickListener)
-        findViewById<Button>(R.id.btnRoot).setOnClickListener(functionClickListener)
-
-        // Constants and brackets
-        findViewById<Button>(R.id.btnPi).setOnClickListener(constantClickListener)
-        findViewById<Button>(R.id.btnE).setOnClickListener(constantClickListener)
-        findViewById<Button>(R.id.btnOpenBracket).setOnClickListener(bracketClickListener)
-        findViewById<Button>(R.id.btnCloseBracket).setOnClickListener(bracketClickListener)
-
-        // Clear, Backspace, and Equals
-        findViewById<Button>(R.id.btnC).setOnClickListener { clearExpression() }
-        findViewById<Button>(R.id.btnBackspace).setOnClickListener { backspace() }
-        findViewById<Button>(R.id.btnEquals).setOnClickListener { calculateResult() }
-    }
-
-    // Listener for number and decimal point buttons
-    private val numberClickListener = View.OnClickListener { view ->
-        val button = view as Button
-        expression.append(button.text)
-        updateExpressionDisplay()
-    }
-
-    // Listener for operator buttons
-    private val operatorClickListener = View.OnClickListener { view ->
-        val button = view as Button
-        // Prevent adding multiple operators in a row
-        if (expression.isNotEmpty() && !isOperator(expression.last())) {
-            expression.append(button.text)
-            updateExpressionDisplay()
-        }
-    }
-
-    // Listener for scientific function buttons (sin, cos, etc.)
-    private val functionClickListener = View.OnClickListener { view ->
-        val button = view as Button
-        val function = button.text.toString()
-        expression.append(function).append("(")
-        updateExpressionDisplay()
-    }
-
-    // Listener for constant buttons (pi, e)
-    private val constantClickListener = View.OnClickListener { view ->
-        val button = view as Button
-        expression.append(button.text)
-        updateExpressionDisplay()
-    }
-
-    // Listener for bracket buttons
-    private val bracketClickListener = View.OnClickListener { view ->
-        val button = view as Button
-        expression.append(button.text)
-        updateExpressionDisplay()
-    }
-
-    // Helper function to check if a character is an operator
-    private fun isOperator(c: Char): Boolean {
-        return c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == 'x'
-    }
-
-    // Updates the expression TextView
-    private fun updateExpressionDisplay() {
-        textViewExpression.text = expression.toString()
-    }
-
-    // Clears the expression
-    private fun clearExpression() {
-        expression.clear()
-        textViewExpression.text = ""
-        textViewResult.text = "0"
-    }
-
-    // Deletes the last character from the expression
-    private fun backspace() {
-        if (expression.isNotEmpty()) {
-            expression.deleteCharAt(expression.length - 1)
-            updateExpressionDisplay()
-        }
-    }
-
-    // Evaluates the expression
-    private fun calculateResult() {
-        try {
-            val result = evaluateExpression(expression.toString())
-            textViewResult.text = result.toString()
-        } catch (e: Exception) {
-            textViewResult.text = "Error"
-            Toast.makeText(this, "Invalid Expression", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    // New, robust function to evaluate the expression using a two-stack algorithm
-    private fun evaluateExpression(expr: String): Double {
-        // Pre-process the expression to handle functions and constants
-        var expressionToEvaluate = expr
-            .replace("π", PI.toString())
-            .replace("e", E.toString())
-            .replace("sin(", "s(")
-            .replace("cos(", "c(")
-            .replace("tan(", "t(")
-            .replace("log(", "l(")
-            .replace("ln(", "n(")
-            .replace("√(", "r(")
-            .replace("x", "*") // Handle the 'x' for multiplication
-
-        val values = Stack<Double>()
-        val ops = Stack<Char>()
-
-        var i = 0
-        while (i < expressionToEvaluate.length) {
-            when (expressionToEvaluate[i]) {
-                in '0'..'9', '.' -> {
-                    val buffer = StringBuilder()
-                    while (i < expressionToEvaluate.length && (expressionToEvaluate[i].isDigit() || expressionToEvaluate[i] == '.')) {
-                        buffer.append(expressionToEvaluate[i++])
-                    }
-                    values.push(buffer.toString().toDouble())
-                    i--
-                }
-                '(' -> ops.push(expressionToEvaluate[i])
-                ')' -> {
-                    while (ops.isNotEmpty() && ops.peek() != '(') {
-                        applyOp(ops.pop(), values)
-                    }
-                    if (ops.isNotEmpty()) ops.pop()
-                    if (ops.isNotEmpty() && "sctl nr".contains(ops.peek())) {
-                        val op = ops.pop()
-                        val value = values.pop()
-                        when (op) {
-                            's' -> values.push(sin(value))
-                            'c' -> values.push(cos(value))
-                            't' -> values.push(tan(value))
-                            'l' -> values.push(log10(value))
-                            'n' -> values.push(ln(value))
-                            'r' -> values.push(sqrt(value))
-                        }
-                    }
-                }
-                in "+-*/^" -> {
-                    while (ops.isNotEmpty() && hasPrecedence(expressionToEvaluate[i], ops.peek())) {
-                        applyOp(ops.pop(), values)
-                    }
-                    ops.push(expressionToEvaluate[i])
-                }
+    private fun setupNumberButtons() {
+        val numberButtons = listOf(
+            R.id.btn_0, R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4,
+            R.id.btn_5, R.id.btn_6, R.id.btn_7, R.id.btn_8, R.id.btn_9
+        )
+        for (id in numberButtons) {
+            findViewById<ImageButton>(id).setOnClickListener {
+                onNumberClick(id)
             }
-            i++
         }
-
-        while (ops.isNotEmpty()) {
-            applyOp(ops.pop(), values)
-        }
-
-        return values.pop()
     }
 
-    // Helper function to check operator precedence
-    private fun hasPrecedence(op1: Char, op2: Char): Boolean {
-        if (op2 == '(' || op2 == ')') return false
-        if ((op1 == '*' || op1 == '/' || op1 == '^') && (op2 == '+' || op2 == '-')) return false
-        if ((op1 == '^') && (op2 == '*' || op2 == '/')) return false
-        return true
+    private fun setupOperatorButtons() {
+        findViewById<ImageButton>(R.id.btn_add).setOnClickListener { onOperatorClick("+") }
+        findViewById<ImageButton>(R.id.btn_minus).setOnClickListener { onOperatorClick("-") }
+        findViewById<ImageButton>(R.id.btn_multiply).setOnClickListener { onOperatorClick("*") }
+        findViewById<ImageButton>(R.id.btn_divide).setOnClickListener { onOperatorClick("/") }
+        findViewById<ImageButton>(R.id.btn_equal).setOnClickListener { onEqualClick() }
+        findViewById<ImageButton>(R.id.btn_dot).setOnClickListener { onDotClick() }
+        findViewById<ImageButton>(R.id.btn_pow).setOnClickListener { onOperatorClick("^") }
+        findViewById<ImageButton>(R.id.btn_mod).setOnClickListener { onOperatorClick("%") }
     }
 
-    // Helper function to apply an operator to the values stack
-    private fun applyOp(op: Char, values: Stack<Double>) {
-        val val2 = values.pop()
-        val val1 = values.pop()
-        when (op) {
-            '+' -> values.push(val1 + val2)
-            '-' -> values.push(val1 - val2)
-            '*' -> values.push(val1 * val2)
-            '/' -> {
-                if (val2 == 0.0) throw ArithmeticException("Division by zero")
-                values.push(val1 / val2)
+    private fun setupFunctionButtons() {
+        findViewById<ImageButton>(R.id.btn_clear).setOnClickListener { onClearClick() }
+        findViewById<ImageButton>(R.id.btn_plus_minus).setOnClickListener { onPlusMinusClick() }
+        findViewById<ImageButton>(R.id.btn_percent).setOnClickListener { onPercentClick() }
+    }
+
+    //sin and all funs in degrees
+
+    private fun setupScientificButtons() {
+        findViewById<ImageButton>(R.id.btn_sin).setOnClickListener { onScientificFunctionClick("sin") }
+        findViewById<ImageButton>(R.id.btn_cos).setOnClickListener { onScientificFunctionClick("cos") }
+        findViewById<ImageButton>(R.id.btn_tan).setOnClickListener { onScientificFunctionClick("tan") }
+        findViewById<ImageButton>(R.id.btn_log).setOnClickListener { onScientificFunctionClick("log") }
+        findViewById<ImageButton>(R.id.btn_ln).setOnClickListener { onScientificFunctionClick("ln") }
+        findViewById<ImageButton>(R.id.btn_sqrt).setOnClickListener { onScientificFunctionClick("sqrt") }
+        findViewById<ImageButton>(R.id.btn_pi).setOnClickListener { onPiClick() }
+        findViewById<ImageButton>(R.id.btn_fact).setOnClickListener { onFactorialClick() }
+        findViewById<ImageButton>(R.id.btn_exp).setOnClickListener { onExpClick() }
+    }
+
+    private fun onNumberClick(buttonId: Int) {
+        if (isNewOperation) {
+            currentInput.clear()
+            isNewOperation = false
+        }
+        val number = when (buttonId) {
+            R.id.btn_0 -> "0"
+            R.id.btn_1 -> "1"
+            R.id.btn_2 -> "2"
+            R.id.btn_3 -> "3"
+            R.id.btn_4 -> "4"
+            R.id.btn_5 -> "5"
+            R.id.btn_6 -> "6"
+            R.id.btn_7 -> "7"
+            R.id.btn_8 -> "8"
+            R.id.btn_9 -> "9"
+            else -> ""
+        }
+        if (currentInput.toString() == "0" && number != "0") {
+            currentInput.clear()
+        }
+        currentInput.append(number)
+        updateDisplay()
+    }
+
+    private fun onOperatorClick(operator: String) {
+        if (!isNewOperation) {
+            lastNumber = currentInput.toString()
+            isNewOperation = true
+            lastOperation = operator
+            displayResult.text = lastNumber + " " + lastOperation
+        }
+    }
+
+    private fun onEqualClick() {
+        if (!isNewOperation && lastOperation.isNotEmpty()) {
+            val secondNumber = currentInput.toString()
+            val result = performCalculation(lastNumber.toDouble(), secondNumber.toDouble(), lastOperation)
+            displayResult.text = lastNumber + " " + lastOperation + " " + secondNumber + " ="
+
+            val formattedResult = String.format("%.5f", result)
+            currentInput.clear().append(formattedResult.trimEnd('0').trimEnd('.'))
+
+            updateDisplay()
+            lastOperation = ""
+            lastNumber = ""
+            isNewOperation = true
+        }
+    }
+
+    private fun onDotClick() {
+        if (isNewOperation) {
+            currentInput.clear().append("0")
+            isNewOperation = false
+        }
+        if (!currentInput.contains(".")) {
+            currentInput.append(".")
+        }
+        updateDisplay()
+    }
+
+    private fun onClearClick() {
+        currentInput.clear().append("0")
+        displayResult.text = ""
+        lastOperation = ""
+        lastNumber = ""
+        isNewOperation = true
+        updateDisplay()
+    }
+
+    private fun onPlusMinusClick() {
+        val value = currentInput.toString().toDoubleOrNull()
+        if (value != null && value != 0.0) {
+            currentInput.clear().append((value * -1).toString())
+            updateDisplay()
+        }
+    }
+
+    private fun onPercentClick() {
+        val value = currentInput.toString().toDoubleOrNull()
+        if (value != null) {
+            currentInput.clear().append((value / 100).toString())
+            updateDisplay()
+        }
+    }
+
+    private fun onScientificFunctionClick(function: String) {
+        val value = currentInput.toString().toDoubleOrNull()
+        if (value != null) {
+            val result = when (function) {
+                "sin" -> sin(Math.toRadians(value))
+                "cos" -> cos(Math.toRadians(value))
+                "tan" -> tan(Math.toRadians(value))
+                "log" -> log10(value)
+                "ln" -> ln(value)
+                "sqrt" -> sqrt(value)
+                else -> 0.0
             }
-            '^' -> values.push(val1.pow(val2))
+            val formattedResult = String.format("%.5f", result)
+            currentInput.clear().append(formattedResult.trimEnd('0').trimEnd('.'))
+            displayResult.text = "$function($value) ="
+            updateDisplay()
         }
+    }
+
+    private fun onPiClick() {
+        currentInput.clear().append(String.format("%.5f", PI).trimEnd('0').trimEnd('.'))
+        updateDisplay()
+    }
+
+    private fun onFactorialClick() {
+        val value = currentInput.toString().toDoubleOrNull()
+        if (value != null && value >= 0 && value % 1.0 == 0.0) {
+            var result = 1.0
+            for (i in 1..value.toInt()) {
+                result *= i
+            }
+            currentInput.clear().append(result.toInt().toString())
+            displayResult.text = "${value.toInt()}! ="
+            updateDisplay()
+        } else {
+            currentInput.clear().append("Error")
+            updateDisplay()
+        }
+    }
+
+    private fun onExpClick() {
+        val value = currentInput.toString().toDoubleOrNull()
+        if (value != null) {
+            val result = exp(value)
+            val formattedResult = String.format("%.5f", result)
+            currentInput.clear().append(formattedResult.trimEnd('0').trimEnd('.'))
+            displayResult.text = "e^$value ="
+            updateDisplay()
+        }
+    }
+
+    private fun performCalculation(first: Double, second: Double, operation: String): Double {
+        return when (operation) {
+            "+" -> first + second
+            "-" -> first - second
+            "*" -> first * second
+            "/" -> first / second
+            "^" -> first.pow(second)
+            "%" -> first % second
+            else -> 0.0
+        }
+    }
+
+    private fun updateDisplay() {
+        displayInput.text = currentInput.toString()
     }
 }
-

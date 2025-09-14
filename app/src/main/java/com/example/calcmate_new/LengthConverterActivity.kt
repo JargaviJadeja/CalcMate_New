@@ -86,7 +86,7 @@ class LengthConverterActivity : AppCompatActivity() {
             // Display the result with a toast and in the result TextView
             val resultText = String.format("%.4f %s", result, toUnit)
             resultTextView.text = resultText
-            Toast.makeText(this, "Conversion successful!", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Conversion successful!", Toast.LENGTH_SHORT).show()
 
         } catch (e: NumberFormatException) {
             Toast.makeText(this, "Invalid number format. Please enter a valid number.", Toast.LENGTH_SHORT).show()

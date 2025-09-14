@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,14 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
-        android:background="@color/bgsettings"
+        android:background="@color/Blue_berry"
         android:elevation="4dp"
         android:layout_marginTop="0dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:gravity="center_vertical">
-
-
 
         <!-- Title of the Activity -->
         <TextView
@@ -36,8 +35,6 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp" />
-
-
 
     </LinearLayout>
 
@@ -61,7 +58,7 @@
                 android:text="Choose a Financial Tool"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/Blue_berry"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="24dp" />
 
@@ -93,16 +90,34 @@
                         android:src="@drawable/loan_calculator_logo"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
-                        android:contentDescription="Loan Calculator"/>
+                        android:elevation="10dp"
+                        android:contentDescription="Loan Calculator" />
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Loan Calculator"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loan Calculator"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="5dp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/starLoan"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Loan Calculator" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
                 <!-- Compound Interest Calculator -->
@@ -122,19 +137,34 @@
                         android:src="@drawable/compound_interest_calculator_logo"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="Compound Interest Calculator"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:text="Compound Interest Calculator"
-                        android:textAlignment="center"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:text="Compound Interest\n Calculator"
+                            android:textAlignment="center"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/starCompoundInterest"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Compound interest calc" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <!-- Simple Interest Calculator -->
@@ -154,17 +184,34 @@
                         android:src="@drawable/simple_interest_calculator_logo"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="Simple Interest Calculator"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Simple Interest Calculator"
-                        android:textAlignment="center"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Simple Interest\n Calculator"
+                            android:textAlignment="center"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/starSimpleInterest"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Simple inetrest calc" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
                 <!-- Tip Calculator -->
@@ -184,16 +231,33 @@
                         android:src="@drawable/tip_calculator_logo"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="Tip Calculator"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tip Calculator"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tip Calculator"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="5dp"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:id="@+id/starTip"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Tip Calculator" />
+                    </LinearLayout>
                 </LinearLayout>
             </GridLayout>
         </LinearLayout>
@@ -206,10 +270,9 @@
         android:layout_height="86dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="@color/background"
+        android:background="@color/Blue_berry"
         android:elevation="8dp"
         android:paddingTop="8dp"
-
         android:paddingBottom="8dp">
 
         <!-- Home Icon -->
@@ -225,11 +288,11 @@
 
         <!-- History Icon -->
         <ImageButton
-            android:id="@+id/btnHistory"
+            android:id="@+id/btnFavorites"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_history"
+            android:src="@drawable/ic_fav"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="History"
             android:padding="12dp" />

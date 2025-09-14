@@ -1,315 +1,633 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#1C1C1C"
-    android:padding="8dp"
+    android:background="@color/white"
     tools:context=".ScientificCalcActivity">
 
-    <!-- Result and Expression Display -->
     <TextView
-        android:id="@+id/textViewResult"
-        android:layout_width="match_parent"
+        android:id="@+id/display_result"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:gravity="end"
-        android:padding="16dp"
-        android:textColor="@color/white"
-        android:textSize="48sp"
         android:text="0"
-        android:maxLines="1"
-        android:ellipsize="start" />
+        android:textColor="@android:color/black"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/display_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textViewExpression"
-        android:layout_width="match_parent"
+        android:id="@+id/display_input"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:gravity="end"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:textColor="#AAAAAA"
-        android:textSize="24sp"
-        android:maxLines="1"
-        android:ellipsize="start" />
+        android:text="0"
+        android:textColor="@android:color/black"
+        android:textSize="72sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#333333"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
 
-    <!-- Calculator Buttons Grid -->
     <GridLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline"
         android:columnCount="5"
-        android:rowCount="6"
-        android:layout_gravity="center"
-        android:alignmentMode="alignMargins"
-        android:useDefaultMargins="true">
+        android:rowCount="5">
 
         <!-- Row 1 -->
-        <Button
-            android:id="@+id/btnSin"
-            style="@style/ScientificButton"
-            android:text="sin"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_sin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/sin"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Sine" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnCos"
-            style="@style/ScientificButton"
-            android:text="cos"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_cos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/cos"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Cosine" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnTan"
-            style="@style/ScientificButton"
-            android:text="Tan"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_tan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/tan"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Tangent" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnPower"
-            style="@style/ScientificButton"
-            android:text="xⁿ"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_log"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/log"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="1dp"
+                android:contentDescription="Log" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnRoot"
-            style="@style/ScientificButton"
-            android:text="√"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_pi"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/pi"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Pi" />
+        </androidx.cardview.widget.CardView>
+
 
         <!-- Row 2 -->
-        <Button
-            android:id="@+id/btnLog"
-            style="@style/ScientificButton"
-            android:text="log"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_clear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/clear"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Clear" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnLn"
-            style="@style/ScientificButton"
-            android:text="ln"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_plus_minus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/plusandminus"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Plus Minus" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnPi"
-            style="@style/ScientificButton"
-            android:text="π"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_percent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/percent"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Percentage" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnE"
-            style="@style/ScientificButton"
-            android:text="e"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_divide"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/divide"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Divide" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnC"
-            style="@style/ClearButton"
-            android:text="C"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_ln"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ln"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="0dp"
+                android:contentDescription="Natural Logarithm" />
+        </androidx.cardview.widget.CardView>
 
         <!-- Row 3 -->
-        <Button
-            android:id="@+id/btn7"
-            style="@style/NumberButton"
-            android:text="7"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#D3E3FF">
+            <ImageButton
+                android:id="@+id/btn_7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/seven"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Seven" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btn8"
-            style="@style/NumberButton"
-            android:text="8"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#D3E3FF">
+            <ImageButton
+                android:id="@+id/btn_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/eight"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Eight" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btn9"
-            style="@style/NumberButton"
-            android:text="9"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
-        <Button
-            android:id="@+id/btnDivide"
-            style="@style/OperatorButton"
-            android:text="/"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#D3E3FF">
+            <ImageButton
+                android:id="@+id/btn_9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/nine"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Nine" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnBackspace"
-            style="@style/ScientificButton"
-            android:text="←"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_multiply"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/multiply"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Multiply" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_pow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/power"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="10dp"
+                android:contentDescription="Power" />
+        </androidx.cardview.widget.CardView>
 
         <!-- Row 4 -->
-        <Button
-            android:id="@+id/btn4"
-            style="@style/NumberButton"
-            android:text="4"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
-        <Button
-            android:id="@+id/btn5"
-            style="@style/NumberButton"
-            android:text="5"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#D3E3FF">
+            <ImageButton
+                android:id="@+id/btn_4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/four"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Four" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btn6"
-            style="@style/NumberButton"
-            android:text="6"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#D3E3FF">
+            <ImageButton
+                android:id="@+id/btn_5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/five"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Five" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnMultiply"
-            style="@style/OperatorButton"
-            android:text="*"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#D3E3FF">
+            <ImageButton
+                android:id="@+id/btn_6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/six"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Six" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btnOpenBracket"
-            style="@style/ScientificButton"
-            android:text="("
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_minus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/minus"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Minus" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_sqrt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/sqrt"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Square Root" />
+        </androidx.cardview.widget.CardView>
 
         <!-- Row 5 -->
-        <Button
-            android:id="@+id/btn1"
-            style="@style/NumberButton"
-            android:text="1"
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
-        <Button
-            android:id="@+id/btn2"
-            style="@style/NumberButton"
-            android:text="2"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#D3E3FF">
+            <ImageButton
+                android:id="@+id/btn_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/one"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="One" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
-        <Button
-            android:id="@+id/btn3"
-            style="@style/NumberButton"
-            android:text="3"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#D3E3FF">
+            <ImageButton
+                android:id="@+id/btn_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/two"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Two" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
-        <Button
-            android:id="@+id/btnSubtract"
-            style="@style/OperatorButton"
-            android:text="-"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#D3E3FF">
+            <ImageButton
+                android:id="@+id/btn_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/three"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Three" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
-        <Button
-            android:id="@+id/btnCloseBracket"
-            style="@style/ScientificButton"
-            android:text=")"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_add"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/add"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Add" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1" />
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_fact"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/factorial"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Factorial" />
+        </androidx.cardview.widget.CardView>
 
         <!-- Row 6 -->
-        <Button
-            android:id="@+id/btnDot"
-            style="@style/NumberButton"
-            android:text="."
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"/>
-        <Button
-            android:id="@+id/btn0"
-            style="@style/NumberButton"
-            android:text="0"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"/>
-        <Button
-            android:id="@+id/btnEquals"
-            style="@style/EqualsButton"
-            android:text="="
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="2"
             android:layout_rowWeight="1"
-            android:layout_columnSpan="2" />
-        <Button
-            android:id="@+id/btnAdd"
-            style="@style/OperatorButton"
-            android:text="+"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#D3E3FF">
+            <ImageButton
+                android:id="@+id/btn_0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/zero"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Zero" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1"/>
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#D3E3FF">
+            <ImageButton
+                android:id="@+id/btn_dot"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/dot"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Dot" />
+        </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_equal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/equal"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="16dp"
+                android:contentDescription="Equal" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_exp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/exp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="0dp"
+                android:contentDescription="Exponent" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="#0041C2">
+            <ImageButton
+                android:id="@+id/btn_mod"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/mod"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:padding="10dp"
+                android:contentDescription="Modulo" />
+        </androidx.cardview.widget.CardView>
     </GridLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

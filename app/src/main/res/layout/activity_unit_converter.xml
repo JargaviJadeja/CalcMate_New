@@ -1,72 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F8FBFF"
-    android:layout_marginTop="0dp"
-    tools:context=".UnitConverterActivity">
+    android:background="@color/backgroundColor">
 
-    <!-- Header Section -->
+    <!-- App Header with Title and Star -->
     <LinearLayout
         android:id="@+id/app_header"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
-        android:background="@color/bgsettings"
+        android:background="@color/Blue_berry"
         android:elevation="4dp"
         android:layout_marginTop="0dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:gravity="center_vertical">
 
-
-
-        <!-- Title of the Activity -->
         <TextView
             android:id="@+id/textViewTitle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
             android:text="CalcMate"
             android:textColor="#FFFFFF"
             android:textSize="32sp"
             android:textStyle="bold"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp" />
 
 
-
     </LinearLayout>
 
-
-    <!-- Main Content Section -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@color/backgroundColor">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Title for the Grid -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Choose a Converter"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/Blue_berry"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="24dp" />
 
-            <!-- 2 x 3 Grid of ImageButtons for different converters -->
             <GridLayout
                 android:id="@+id/converterGrid"
                 android:layout_width="match_parent"
@@ -78,13 +67,11 @@
                 android:useDefaultMargins="true">
 
                 <!-- Length Converter -->
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/cardLength"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:padding="12dp">
 
                     <ImageButton
@@ -92,28 +79,45 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/length_convert_logo"
+                        android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="Length Converter"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Length Converter"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                        android:layout_below="@id/btnLengthConverter"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Length Converter"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:id="@+id/starLength"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Length Converter" />
+                    </LinearLayout>
+                </RelativeLayout>
 
                 <!-- Weight Converter -->
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/cardWeight"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:padding="12dp">
 
                     <ImageButton
@@ -121,28 +125,45 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/weight_converter_logo"
+                        android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="Weight Converter"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Weight Converter"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                        android:layout_below="@id/btnWeightConverter"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Weight Converter"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:id="@+id/starWeight"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Weight Converter" />
+                    </LinearLayout>
+                </RelativeLayout>
 
                 <!-- Temperature Converter -->
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/cardTemperature"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:padding="12dp">
 
                     <ImageButton
@@ -150,28 +171,45 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/temp_convert_logo"
+                        android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="Temperature Converter"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Temperature Converter"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                        android:layout_below="@id/btnTemperatureConverter"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Temperature \nConverter"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:id="@+id/starTemperature"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Temperature Converter" />
+                    </LinearLayout>
+                </RelativeLayout>
 
                 <!-- Volume Converter -->
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/cardVolume"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:padding="12dp">
 
                     <ImageButton
@@ -179,28 +217,45 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/volumeconvert_logo"
+                        android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="Volume Converter"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Volume Converter"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                        android:layout_below="@id/btnVolumeConverter"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Volume Converter"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:id="@+id/starVolume"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Volume Converter" />
+                    </LinearLayout>
+                </RelativeLayout>
 
                 <!-- Area Converter -->
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/cardArea"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:padding="12dp">
 
                     <ImageButton
@@ -208,28 +263,45 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/areaconvert_logo"
+                        android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="Area Converter"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Area Converter"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                        android:layout_below="@id/btnAreaConverter"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Area Converter"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:id="@+id/starArea"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Area Converter" />
+                    </LinearLayout>
+                </RelativeLayout>
 
                 <!-- Data Transfer Rate Converter -->
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/cardDataRate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:padding="12dp">
 
                     <ImageButton
@@ -237,59 +309,73 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/datarate_logo"
+                        android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="Data Transfer Rate Converter"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Data Transfer Rate"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                        android:layout_below="@id/btnDataTransferRateConverter"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Data Transfer Rate"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:id="@+id/starDataTransferRate"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Data Transfer Rate Converter" />
+                    </LinearLayout>
+                </RelativeLayout>
             </GridLayout>
         </LinearLayout>
     </ScrollView>
 
     <!-- Footer Section -->
-    <!-- We include the common footer layout here -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="86dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="@color/background"
+        android:background="@color/Blue_berry"
         android:elevation="8dp"
         android:paddingTop="8dp"
-
         android:paddingBottom="8dp">
 
-        <!-- Home Icon -->
         <ImageButton
             android:id="@+id/btnHome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_home"
+            android:src="@drawable/ic_homeselected"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Home"
             android:padding="12dp" />
 
-        <!-- History Icon -->
         <ImageButton
-            android:id="@+id/btnHistory"
+            android:id="@+id/btnFavorites"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_history"
+            android:src="@drawable/ic_fav"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="History"
+            android:contentDescription="Favorites"
             android:padding="12dp" />
 
-        <!-- Settings Icon -->
         <ImageButton
             android:id="@+id/btnSettings"
             android:layout_width="0dp"
@@ -299,7 +385,5 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Settings"
             android:padding="12dp" />
-
     </LinearLayout>
-
 </LinearLayout>

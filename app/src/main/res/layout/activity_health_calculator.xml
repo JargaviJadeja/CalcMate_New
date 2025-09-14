@@ -14,14 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
-        android:background="@color/bgsettings"
+        android:background="@color/Blue_berry"
         android:elevation="4dp"
         android:layout_marginTop="0dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:gravity="center_vertical">
-
-
 
         <!-- Title of the Activity -->
         <TextView
@@ -37,8 +35,6 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp" />
-
-
 
     </LinearLayout>
 
@@ -77,9 +73,9 @@
                 android:columnOrderPreserved="false"
                 android:useDefaultMargins="true">
 
-                <!-- Length Converter -->
+                <!-- BMI Calculator -->
                 <LinearLayout
-                    android:id="@+id/cardLength"
+                    android:id="@+id/cardBmi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -94,21 +90,38 @@
                         android:src="@drawable/ic_bmi"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="BMI"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="BMI"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BMI"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="7dp"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:id="@+id/starBmi"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite BMI Calculator" />
+                    </LinearLayout>
                 </LinearLayout>
 
-                <!-- Weight Converter -->
+                <!-- BMR Calculator -->
                 <LinearLayout
-                    android:id="@+id/cardWeight"
+                    android:id="@+id/cardBmr"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -123,21 +136,39 @@
                         android:src="@drawable/ic_bmr"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="BMR"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="BMR"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BMR"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="7dp"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:id="@+id/starBmr"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Bmr Calculator" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
-                <!-- Temperature Converter -->
+                <!-- Ideal Weight Calculator -->
                 <LinearLayout
-                    android:id="@+id/cardTemperature"
+                    android:id="@+id/cardIdealWeight"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -152,21 +183,39 @@
                         android:src="@drawable/ic_ideal_weight"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="Ideal Weight"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ideal Weight"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ideal Weight"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="7dp"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:id="@+id/starIdealWeight"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Ideal weight Calculator" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
-                <!-- Volume Converter -->
+                <!-- Calorie Intake Calculator -->
                 <LinearLayout
-                    android:id="@+id/cardVolume"
+                    android:id="@+id/cardCalorieIntake"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -181,90 +230,48 @@
                         android:src="@drawable/ic_calorie_intake"
                         android:scaleType="centerInside"
                         android:background="@drawable/button_card_bg"
+                        android:elevation="10dp"
                         android:contentDescription="Calorie Intake"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Calorie Intake"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
-                <!-- Area Converter -->
-                <LinearLayout
-                    android:id="@+id/cardArea"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Calorie Intake"
+                            android:textColor="#0041C2"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="7dp"
+                            android:textStyle="bold"/>
 
-                    <ImageButton
-                        android:id="@+id/btnBodyFat"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/ic_body_fat"
-                        android:scaleType="centerInside"
-                        android:background="@drawable/button_card_bg"
-                        android:contentDescription="Body Fat"/>
+                        <ImageView
+                            android:id="@+id/starCalorieIntake"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star_outline"
+                            android:contentDescription="Favorite Calorie Intake Calculator" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Body Fat"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-
-                <!-- Data Transfer Rate Converter -->
-                <LinearLayout
-                    android:id="@+id/cardDataRate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp">
-
-                    <ImageButton
-                        android:id="@+id/btnHeartRate"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/ic_heart_rate"
-                        android:scaleType="centerInside"
-                        android:background="@drawable/button_card_bg"
-                        android:contentDescription="Heart Rate"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Heart Rate"
-                        android:textColor="#1A73E8"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:textStyle="bold"/>
+                    </LinearLayout>
                 </LinearLayout>
             </GridLayout>
         </LinearLayout>
     </ScrollView>
 
     <!-- Footer Section -->
-    <!-- We include the common footer layout here -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="86dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="@color/background"
+        android:background="@color/Blue_berry"
         android:elevation="8dp"
         android:paddingTop="8dp"
-
         android:paddingBottom="8dp">
 
         <!-- Home Icon -->
@@ -278,15 +285,15 @@
             android:contentDescription="Home"
             android:padding="12dp" />
 
-        <!-- History Icon -->
+        <!-- Favorites Icon -->
         <ImageButton
-            android:id="@+id/btnHistory"
+            android:id="@+id/btnFavorites"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_history"
+            android:src="@drawable/ic_fav"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="History"
+            android:contentDescription="Favorites"
             android:padding="12dp" />
 
         <!-- Settings Icon -->

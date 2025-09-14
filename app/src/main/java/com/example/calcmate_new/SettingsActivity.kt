@@ -1,80 +1,85 @@
 package com.example.calcmate_new
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
-import android.widget.ImageView
+import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.SwitchCompat
+import com.example.calcmate_new.R
 
 class SettingsActivity : AppCompatActivity() {
-
-    // Define a constant for the SharedPreferences file name
-    private val PREFS_NAME = "ThemePrefs"
-    private val THEME_KEY = "theme_mode"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        // Find the back arrow button by its ID
-        val ivBack: ImageView = findViewById(R.id.ivBack)
 
-        // Set an OnClickListener on the back arrow to finish the current activity
-        ivBack.setOnClickListener {
-            finish()
-        }
 
-        // Get a reference to the theme switch from the layout file
-        val themeSwitch: SwitchCompat = findViewById(R.id.switchDarkMode)
-
-        // Load the saved theme preference
-        val sharedPrefs: SharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val isNightMode = sharedPrefs.getBoolean(THEME_KEY, false) // Default to light mode
-
-        // Set the initial state of the switch based on the saved preference
-        themeSwitch.isChecked = isNightMode
-
-        // Set a listener for when the switch state changes
-        themeSwitch.setOnCheckedChangeListener { _, isChecked ->
-            // Save the new theme preference
-            with(sharedPrefs.edit()) {
-                putBoolean(THEME_KEY, isChecked)
-                apply()
-            }
-            // Apply the new theme
-            applyTheme(isChecked)
-        }
-
-        // ---------------------------------------------------------------------
-        // ADDED CODE: Handles the click for the "About" section.
-        // ---------------------------------------------------------------------
-
-        // Find the "About" TextView (or CardView if you're using that)
-        val aboutTextView: TextView = findViewById(R.id.aboutTextView) // **Make sure to use the correct ID from your XML!**
-
-        // Set a click listener to start the AboutusActivity.
-        aboutTextView.setOnClickListener {
+        // Set up click listeners for each settings option
+        val optionAbout: LinearLayout = findViewById(R.id.optionAbout)
+        optionAbout.setOnClickListener {
             val intent = Intent(this, AboutusActivity::class.java)
+            startActivity(intent)
+        }
+
+        val optionFeedback: LinearLayout = findViewById(R.id.optionFeedback)
+        optionFeedback.setOnClickListener {
+            val intent = Intent(this, FeedbackActivity::class.java)
+            startActivity(intent)
+        }
+
+        val optionContactUs: LinearLayout = findViewById(R.id.optionContactUs)
+        optionContactUs.setOnClickListener {
+            val intent = Intent(this, ContactActivity::class.java)
+            startActivity(intent)
+        }
+
+        val optionPolicy: LinearLayout = findViewById(R.id.optionPolicy)
+        optionPolicy.setOnClickListener {
+            val intent = Intent(this, PolicyActivity::class.java)
+            startActivity(intent)
+        }
+
+        val optionRateUs: LinearLayout = findViewById(R.id.optionRateUs)
+        fun openPrivacyPolicy() {
+            // You will need to host your privacy policy on a website and put the URL here.
+            // For example: "https://www.your-app-website.com/privacy"
+            val url = "https://www.google.com" // Replace with your actual privacy policy URL
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
             startActivity(intent)
         }
 
 
 
+
+
+        // Set up the footer navigation
+
     }
 
-    /**
-     * Applies the selected theme to the application.
-     * @param isNightMode True for dark mode, False for light mode.
-     */
-    private fun applyTheme(isNightMode: Boolean) {
-        if (isNightMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    private fun setupFooter() {
+        val btnHome: ImageButton = findViewById(R.id.btnHome)
+        val btnFavorites: ImageButton = findViewById(R.id.btnFavorites) // Renamed from btnHistory for clarity
+        val btnSettings: ImageButton = findViewById(R.id.btnSettings)
+
+        // Set up listeners for the footer buttons
+        btnHome.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnFavorites.setOnClickListener {
+            val intent = Intent(this, FavoritesActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnSettings.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
         }
     }
 }

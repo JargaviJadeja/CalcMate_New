@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         btnHistory.setOnClickListener {
             // Update the icons and then navigate to the History screen
             updateFooterIcons("history")
-            val intent = Intent(this@MainActivity, HistoryActivity::class.java)
+            val intent = Intent(this@MainActivity, FavoritesActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_HISTORY)
         }
 

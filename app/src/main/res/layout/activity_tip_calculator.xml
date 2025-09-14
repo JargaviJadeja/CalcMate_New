@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Tip Calculator"
-        android:textColor="#1F2937"
+        android:textColor="#0041C2"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +100,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#659EC7"
+        android:backgroundTint="#0041C2"
         android:paddingVertical="16dp"
         android:text="Calculate"
         app:cornerRadius="16dp"
@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Results"
-                android:textColor="#334155"
+                android:textColor="#0041C2"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

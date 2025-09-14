@@ -11,9 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CalcMate_New">
-        <activity
-            android:name=".BasicCalActivity"
-            android:exported="false" />
+
         <!-- Splash is your launcher -->
         <activity
             android:name=".SplashActivity"
@@ -25,7 +23,7 @@
             </intent-filter>
         </activity> <!-- Dashboard that Splash opens -->
         <activity android:name=".DashboardActivity" /> <!-- Destinations -->
-<!--        <activity android:name=".BasicCalcActivity" />-->
+        <activity android:name=".BasicCalActivity" />
         <activity android:name=".ScientificCalcActivity" />
         <activity android:name=".UnitConverterActivity" />
         <activity android:name=".LengthConverterActivity" />
@@ -49,11 +47,13 @@
         <activity android:name=".TimeZoneActivity" />
         <activity android:name=".TimestampActivity" />
         <activity android:name=".ProgrammerCalculatorActivity" /> <!-- Add these new activities that the footer links to -->
-        <activity android:name=".HistoryActivity" />
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".AboutusActivity"/>
+        <activity android:name=".ContactActivity"/>
+        <activity android:name=".PolicyActivity"/>
+        <activity android:name=".FavoritesActivity"/>
         <activity android:name=".SettingsActivity" />
-        <activity
-            android:name=".AboutusActivity"
-            android:exported="false" />
+
     </application>
 
 </manifest>
